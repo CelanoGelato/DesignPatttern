@@ -1,15 +1,16 @@
 package designpattern.singleton;
 
 public class ThreadSafeLazyInitializedSingleton {
-    private static volatile ThreadSafeLazyInitializedSingleton instance;
+    private static volatile ThreadSafeLazyInitializedSingleton INSTANCE;
 
-    private ThreadSafeLazyInitializedSingleton(){
+    private ThreadSafeLazyInitializedSingleton() {
 
     }
+
     public static synchronized ThreadSafeLazyInitializedSingleton getInstance() {
-        if (instance == null) {
-            instance = new ThreadSafeLazyInitializedSingleton();
+        if (INSTANCE == null) {
+            INSTANCE = new ThreadSafeLazyInitializedSingleton();
         }
-        return instance;
+        return INSTANCE;
     }
 }

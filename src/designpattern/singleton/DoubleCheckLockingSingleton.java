@@ -1,17 +1,22 @@
 package designpattern.singleton;
 
+import com.sun.scenario.effect.impl.prism.PrImage;
+
 public class DoubleCheckLockingSingleton {
-    private static volatile DoubleCheckLockingSingleton instance;
+    private static volatile DoubleCheckLockingSingleton INSTANCE;
+
     private DoubleCheckLockingSingleton() {
+
     }
+
     private static DoubleCheckLockingSingleton getInstance() {
-        if (instance == null) {
+        if (INSTANCE == null) {
             synchronized (DoubleCheckLockingSingleton.class) {
-                if (instance == null) {
-                    instance = new DoubleCheckLockingSingleton();
+                if (INSTANCE == null) {
+                    INSTANCE = new DoubleCheckLockingSingleton();
                 }
             }
         }
-        return instance;
+        return INSTANCE;
     }
 }
